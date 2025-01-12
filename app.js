@@ -18,4 +18,18 @@ app.use(express.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => res.render("index"));
 
+app.post("/sign-up", async (req, res, next) => {
+  try {
+    await pool.query("INSERT INTO users (firstName, lastName, email, password) VALUES ($1, $2, $3, $4)", [
+      req.body.firstName,
+      req.body.lastName,
+      req.body.email,
+      req.body.password,
+    ]);
+    res.redirect("/");
+  } catch (err) {
+    return next(err);
+  }
+});
+
 app.listen(PORT, () => console.log("App listening on port 3000"));
