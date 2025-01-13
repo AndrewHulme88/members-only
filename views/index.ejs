@@ -7,7 +7,7 @@
   <h1>hello world!</h1>
 
   <% if (locals.user) { %>
-    <h1>Welcome, <%= user.email %>!</h1>
+    <h1>Welcome, <%= user.first_name %>!</h1>
     <form action="/users/logout" method="post">
       <button>Log Out</button>
     </form>
