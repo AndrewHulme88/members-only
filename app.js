@@ -26,6 +26,8 @@ app.use((req, res, next) => {
   next();
 });
 
+app.get("/", (req, res) => res.render("index", { user: req.user }));
+
 app.use("/users", userRouter);
 app.use("/messages", messageRouter);
 

@@ -49,10 +49,6 @@ passport.deserializeUser(async (id, done) => {
 });
 
 module.exports = {
-  home: (req, res) => {
-    res.render("index", { user: req.user });
-  },
-
   signUpForm: (req, res) => {
     res.render("sign-up-form", {
       user: { firstName: "", lastName: "", email: ""},
@@ -125,7 +121,7 @@ module.exports = {
         }
 
         console.log("User logged in successfully:", user);
-        return res.redirect("/users");
+        return res.redirect("/");
       });
     })(req, res, next);
   },
@@ -135,7 +131,7 @@ module.exports = {
       if (err) {
         return next(err);
       }
-      res.redirect("/users");
+      res.redirect("/");
     });
   },
 
@@ -150,7 +146,7 @@ module.exports = {
     if (passcode === correctPasscode) {
       try {
         await pool.query("UPDATE users SET membership_status = true WHERE id = $1", [req.user.id]);
-        res.redirect("/users");
+        res.redirect("/");
       } catch (err) {
         console.error("Error updating membership status", err);
         res.status(500).json({ error: "Failed to update membership status" });

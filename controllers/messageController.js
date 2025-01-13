@@ -31,7 +31,7 @@ module.exports = {
           "INSERT INTO messages (user_id, title, text, created_at) VALUES ($1, $2, $3, NOW())",
           [userId, title, text]
         );
-        res.redirect("/users");
+        res.redirect("/");
       } catch (err) {
         console.error("Error creating message", err);
         res.status(500).send("Error creating message");
