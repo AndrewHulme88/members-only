@@ -12,4 +12,7 @@ userRouter.post("/login", userController.login);
 
 userRouter.post("/logout", userController.logout);
 
+userRouter.get("/join-club", userController.joinClubForm);
+userRouter.post("/join-club", userController.joinClub);
+
 module.exports = userRouter;

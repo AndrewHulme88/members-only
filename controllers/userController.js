@@ -137,5 +137,26 @@ module.exports = {
       }
       res.redirect("/users");
     });
+  },
+
+  joinClubForm: (req, res) => {
+    res.render("join-the-club");
+  },
+
+  joinClub: async (req, res) => {
+    const { passcode } = req.body;
+    const correctPasscode = process.env.SECRET_PASSCODE;
+
+    if (passcode === correctPasscode) {
+      try {
+        await pool.query("UPDATE users SET membership_status = true WHERE id = $1", [req.user.id]);
+        res.redirect("/users");
+      } catch (err) {
+        console.error("Error updating membership status", err);
+        res.status(500).json({ error: "Failed to update membership status" });
+      }
+    } else {
+      res.render("join-the-club", { error: "Incorrect passcode. Please try again." });
+    }
   }
 };
