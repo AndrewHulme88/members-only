@@ -4,14 +4,19 @@
   <title>Home</title>
 </head>
 <body>
-  <h1>hello world!</h1>
+  <h1>Home</h1>
 
   <% if (locals.user) { %>
-    <h1>Welcome, <%= user.first_name %>!</h1>
+    <h1>Welcome, <%= user.first_name %><%= user.membership_status ? '*' : '' %>!</h1>
+
     <form action="/users/logout" method="post">
       <button>Log Out</button>
     </form>
-    <a href="/users/join-club">Join the Club</a>
+
+    <% if (!user.membership_status) { %>
+      <a href="/users/join-club">Join the Club</a>
+    <% } %>
+
   <% } else { %>
     <h1>Welcome, Guest!</h1>
   <% } %>
