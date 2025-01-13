@@ -5,6 +5,7 @@ const session = require("express-session");
 const { body, validationResult } = require("express-validator");
 const passport = require("passport");
 const userRouter = require("./routes/userRoutes");
+const messageRouter = require("./routes/messageRoutes");
 const PORT = process.env.PORT || 3000;
 const app = express();
 const bodyParser = require('body-parser');
@@ -26,5 +27,6 @@ app.use((req, res, next) => {
 });
 
 app.use("/users", userRouter);
+app.use("/messages", messageRouter);
 
 app.listen(PORT, () => console.log("App listening on port 3000"));

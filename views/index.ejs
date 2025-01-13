@@ -9,6 +9,10 @@
   <% if (locals.user) { %>
     <h1>Welcome, <%= user.first_name %><%= user.membership_status ? '*' : '' %>!</h1>
 
+    <form action="/messages/new" method="get">
+      <button>New Message</button>
+    </form>
+
     <form action="/users/logout" method="post">
       <button>Log Out</button>
     </form>
