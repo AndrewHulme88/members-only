@@ -8,6 +8,9 @@
 
   <% if (locals.user) { %>
     <h1>Welcome, <%= user.email %>!</h1>
+    <form action="/users/logout" method="post">
+      <button>Log Out</button>
+    </form>
   <% } else { %>
     <h1>Welcome, Guest!</h1>
   <% } %>

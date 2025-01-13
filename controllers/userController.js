@@ -99,5 +99,14 @@ module.exports = {
         return res.redirect("/users");
       });
     })(req, res, next);
+  },
+
+  logout: (req, res, next) => {
+    req.logout((err) => {
+      if (err) {
+        return next(err);
+      }
+      res.redirect("/users");
+    });
   }
 };

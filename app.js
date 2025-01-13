@@ -20,6 +20,11 @@ app.use(session({ secret: "cats", resave: false, saveUninitialized: false}));
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  next();
+});
+
 app.use("/users", userRouter);
 
 app.listen(PORT, () => console.log("App listening on port 3000"));
