@@ -26,8 +26,14 @@
       <ul>
         <% messages.forEach(message => { %>
           <li>
-            <strong><%= message.title %></strong> - <%= message.text %>
-            <em>(Posted on <%= new Date(message.created_at).toLocaleDateString() %>)</em>
+            <% if (user.membership_status) { %>
+              <strong>(<%= message.first_name %> <%= message.last_name %>)</strong><br>
+            <% } %>
+            <strong><%= message.title %></strong><br>
+            <%= message.text %><br>
+            <% if (user.membership_status) { %>
+              <em>(Posted on <%= new Date(message.created_at).toLocaleDateString() %>)</em>
+            <% } %>
           </li>
         <% }) %>
       </ul>
