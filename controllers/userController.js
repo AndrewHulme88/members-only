@@ -71,11 +71,14 @@ module.exports = {
     async (req, res, next) => {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
+        console.log("Validation errors:", errors.array());
         return res.render("sign-up-form", {
           user: {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
-            email: req.body.email
+            email: req.body.email,
+            password: req.body.password,
+            confirmPassword: req.body.confirmPassword
           },
           errors: errors.array()
         });
