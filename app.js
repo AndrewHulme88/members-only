@@ -6,6 +6,7 @@ const { body, validationResult } = require("express-validator");
 const passport = require("passport");
 const userRouter = require("./routes/userRoutes");
 const messageRouter = require("./routes/messageRoutes");
+const homeRouter = require("./routes/homeRoutes");
 const PORT = process.env.PORT || 3000;
 const app = express();
 const bodyParser = require('body-parser');
@@ -26,8 +27,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/", (req, res) => res.render("index", { user: req.user }));
-
+app.use("/", homeRouter);
 app.use("/users", userRouter);
 app.use("/messages", messageRouter);
 

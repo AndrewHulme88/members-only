@@ -8,35 +8,30 @@
   <form action="/users/sign-up" method="post">
     <label for="firstName">First Name:</label>
     <input type="text" id="firstName" name="firstName" placeholder="First Name" value="<%= user.firstName || '' %>"><br>
-    <!-- Check if errors exist and display the first error message for firstName -->
     <% if (errors && errors.find(e => e.param === 'firstName')) { %>
       <p style="color: red;"><%= errors.find(e => e.param === 'firstName').msg %></p>
     <% } %>
 
     <label for="lastName">Last Name:</label>
     <input type="text" id="lastName" name="lastName" placeholder="Last Name" value="<%= user.lastName || '' %>"><br>
-    <!-- Check if errors exist and display the first error message for lastName -->
     <% if (errors && errors.find(e => e.param === 'lastName')) { %>
       <p style="color: red;"><%= errors.find(e => e.param === 'lastName').msg %></p>
     <% } %>
 
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" placeholder="Email" value="<%= user.email || '' %>"><br>
-    <!-- Check if errors exist and display the first error message for email -->
     <% if (errors && errors.find(e => e.param === 'email')) { %>
       <p style="color: red;"><%= errors.find(e => e.param === 'email').msg %></p>
     <% } %>
 
     <label for="password">Password:</label>
     <input type="password" name="password" id="password" value="<%= user.password || '' %>"><br>
-    <!-- Check if errors exist and display the first error message for password -->
     <% if (errors && errors.find(e => e.param === 'password')) { %>
       <p style="color: red;"><%= errors.find(e => e.param === 'password').msg %></p>
     <% } %>
 
     <label for="confirmPassword">Confirm Password:</label>
     <input type="password" name="confirmPassword" id="confirmPassword" value="<%= user.confirmPassword || '' %>"><br>
-    <!-- Check if errors exist and display the first error message for confirmPassword -->
     <% if (errors && errors.find(e => e.param === 'confirmPassword')) { %>
       <p style="color: red;"><%= errors.find(e => e.param === 'confirmPassword').msg %></p>
     <% } %>

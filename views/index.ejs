@@ -21,6 +21,20 @@
       <a href="/users/join-club">Join the Club</a>
     <% } %>
 
+    <h2>Messages</h2>
+    <% if (messages && messages.length > 0) { %>
+      <ul>
+        <% messages.forEach(message => { %>
+          <li>
+            <strong><%= message.title %></strong> - <%= message.text %>
+            <em>(Posted on <%= new Date(message.created_at).toLocaleDateString() %>)</em>
+          </li>
+        <% }) %>
+      </ul>
+    <% } else { %>
+      <p>No messages yet.</p>
+    <% } %>
+
   <% } else { %>
     <h1>Welcome, Guest!</h1>
   <% } %>
