@@ -21,6 +21,10 @@
       <a href="/users/join-club">Join the Club</a>
     <% } %>
 
+    <% if (!user.admin) { %>
+      <a href="/users/admin-signup">Admin Signup</a>
+    <% } %>
+
     <h2>Messages</h2>
     <% if (messages && messages.length > 0) { %>
       <ul>
@@ -43,9 +47,12 @@
 
   <% } else { %>
     <h1>Welcome, Guest!</h1>
+
+    <a href="/users/sign-up">Sign Up</a>
+    <a href="/users/login">Login</a>
+
   <% } %>
 
-  <a href="/users/sign-up">Sign Up</a>
-  <a href="/users/login">Login</a>
+
 </body>
 </html>

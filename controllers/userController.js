@@ -4,6 +4,7 @@ const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcryptjs");
 const { body, validationResult } = require("express-validator");
+const { ResultWithContextImpl } = require("express-validator/lib/chain");
 
 passport.use(
   new LocalStrategy(
@@ -156,6 +157,27 @@ module.exports = {
       }
     } else {
       res.render("join-the-club", { error: "Incorrect passcode. Please try again." });
+    }
+  },
+
+  adminSignUpForm: (req, res) => {
+    res.render("admin-signup-form");
+  },
+
+  adminSignUp: async (req, res) => {
+    const { adminPasscode } = req.body;
+    const correctAdminPasscode = process.env.SECRET_ADMIN_PASSCODE;
+
+    if (adminPasscode === correctAdminPasscode) {
+      try {
+        await pool.query("UPDATE users SET admin = true WHERE id = $1", [req.user.id]);
+        res.redirect("/");
+      } catch (err) {
+        console.error("Error updating admin status", err);
+        res.status(500).json({ error: "Incorrect admin passcode. Please try again." });
+      }
+    } else {
+      res.render("admin-signup-form", { error: "Incorrect admin passcode. Please try again." });
     }
   }
 };
