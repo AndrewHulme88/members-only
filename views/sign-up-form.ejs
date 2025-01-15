@@ -2,9 +2,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Sign Up</title>
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
   <h1>Sign Up</h1>
+
   <form action="/users/sign-up" method="post">
     <label for="firstName">First Name:</label>
     <input type="text" id="firstName" name="firstName" placeholder="First Name" value="<%= user.firstName || '' %>"><br>

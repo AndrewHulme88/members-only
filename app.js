@@ -10,7 +10,6 @@ const homeRouter = require("./routes/homeRoutes");
 const PORT = process.env.PORT || 3000;
 const app = express();
 const bodyParser = require('body-parser');
-const LocalStrategy = require("passport-local").Strategy;
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -21,6 +20,8 @@ app.use(bodyParser.json());
 app.use(session({ secret: "cats", resave: false, saveUninitialized: false}));
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(express.static("public"));
 
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;

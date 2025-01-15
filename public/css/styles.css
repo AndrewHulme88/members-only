@@ -1,0 +1,140 @@
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  padding: 20px;
+}
+
+h1, h2 {
+  color: #2c3e50;
+}
+
+/* Container for the home page content */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Message List Styles */
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+li {
+  background-color: #fff;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+strong {
+  display: block;
+  font-size: 1.2em;
+  color: #34495e;
+}
+
+em {
+  font-size: 0.9em;
+  color: #7f8c8d;
+}
+
+/* Forms */
+form {
+  margin: 20px 0;
+}
+
+input, textarea, button {
+  font-size: 1em;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+input[type="hidden"] {
+  display: none;
+}
+
+button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+/* Links */
+a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Admin and Membership styles */
+.admin-controls {
+  background-color: #ecf0f1;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.admin-controls a {
+  margin-right: 15px;
+}
+
+/* Logout, Join Club, and Admin Signup */
+button.logout, button.join, button.admin {
+  background-color: #e74c3c;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+button.logout:hover, button.join:hover, button.admin:hover {
+  background-color: #c0392b;
+}
+
+/* Message Input */
+textarea {
+  width: 100%;
+  height: 100px;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  button, input, textarea {
+    width: 100%;
+  }
+
+  .admin-controls a {
+    display: block;
+    margin-bottom: 10px;
+  }
+}
