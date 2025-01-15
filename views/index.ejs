@@ -38,6 +38,13 @@
             <% if (user.membership_status) { %>
               <em>(Posted on <%= new Date(message.created_at).toLocaleDateString() %>)</em>
             <% } %>
+
+            <% if (user.admin) { %>
+              <form action="/messages/delete" method="post">
+                <input type="hidden" name="messageId" value="<%= message.id %>">
+                <button type="submit">Delete Message</button>
+              </form>
+            <% } %>
           </li>
         <% }) %>
       </ul>

@@ -37,5 +37,25 @@ module.exports = {
         res.status(500).send("Error creating message");
       }
     }
-  ]
+  ],
+
+  deleteMessage: async (req, res) => {
+    if (req.user && req.user.admin) {
+      const messageId = parseInt(req.body.messageId, 10);
+
+      if (isNaN(messageId)) {
+        return res.status(400).send("Invalid message ID.");
+      }
+
+      try {
+        await pool.query("DELETE FROM messages WHERE id = $1", [messageId]);
+        res.redirect("/");
+      } catch (err) {
+        console.error(err);
+        res.status(500).send("Error deleting message");
+      }
+    } else {
+      res.status(403).send("Unauthorized");
+    }
+  }
 };
